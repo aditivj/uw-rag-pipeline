@@ -1,0 +1,7 @@
+chroma_db/
+logs/
+__pycache__/
+*.pyc
+.env
+evals/eval_results.json
+data/docs/

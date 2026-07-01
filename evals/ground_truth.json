@@ -1,0 +1,142 @@
+[
+  {
+    "id": "HO-01",
+    "source": "homeowners_policy_HO2024-00847.pdf",
+    "question": "What is the deductible for Coverage C?",
+    "expected_answer": "15000",
+    "keywords": ["15,000", "Coverage C", "deductible"]
+  },
+  {
+    "id": "HO-02",
+    "source": "homeowners_policy_HO2024-00847.pdf",
+    "question": "What is the dwelling coverage limit?",
+    "expected_answer": "8500000",
+    "keywords": ["85,00,000", "Coverage A", "dwelling"]
+  },
+  {
+    "id": "HO-03",
+    "source": "homeowners_policy_HO2024-00847.pdf",
+    "question": "Is flood damage covered under this policy?",
+    "expected_answer": "no",
+    "keywords": ["flood", "not covered", "excluded", "exclusion"]
+  },
+  {
+    "id": "HO-04",
+    "source": "homeowners_policy_HO2024-00847.pdf",
+    "question": "What is the personal liability coverage limit?",
+    "expected_answer": "5000000",
+    "keywords": ["50,00,000", "Coverage E", "liability"]
+  },
+  {
+    "id": "HO-05",
+    "source": "homeowners_policy_HO2024-00847.pdf",
+    "question": "What discounts are applied to this policy?",
+    "expected_answer": "fire alarm and claim free",
+    "keywords": ["fire alarm", "claim-free", "discount"]
+  },
+  {
+    "id": "HO-06",
+    "source": "homeowners_policy_HO2024-00847.pdf",
+    "question": "What is the policy period?",
+    "expected_answer": "01 April 2024 to 31 March 2025",
+    "keywords": ["April 2024", "March 2025"]
+  },
+  {
+    "id": "HO-07",
+    "source": "homeowners_policy_HO2024-00847.pdf",
+    "question": "What is the special limit for jewellery theft?",
+    "expected_answer": "200000",
+    "keywords": ["2,00,000", "jewellery", "theft"]
+  },
+  {
+    "id": "HO-08",
+    "source": "homeowners_policy_HO2024-00847.pdf",
+    "question": "Within how many days must proof of loss be filed?",
+    "expected_answer": "30 days",
+    "keywords": ["30 days", "proof of loss"]
+  },
+  {
+    "id": "CLM-01",
+    "source": "claims_report_CLM2024-03291.pdf",
+    "question": "What was the cause of loss in claim CLM2024-03291?",
+    "expected_answer": "thunderstorm windstorm hail",
+    "keywords": ["thunderstorm", "windstorm", "hail"]
+  },
+  {
+    "id": "CLM-02",
+    "source": "claims_report_CLM2024-03291.pdf",
+    "question": "What is the net claim amount recommended for settlement?",
+    "expected_answer": "812000",
+    "keywords": ["8,12,000", "net payable", "settlement"]
+  },
+  {
+    "id": "CLM-03",
+    "source": "claims_report_CLM2024-03291.pdf",
+    "question": "What was the wind speed recorded during the storm?",
+    "expected_answer": "94 km/h",
+    "keywords": ["94", "km/h", "wind speed"]
+  },
+  {
+    "id": "CLM-04",
+    "source": "claims_report_CLM2024-03291.pdf",
+    "question": "Who conducted the physical survey?",
+    "expected_answer": "Infrastructure Loss Surveyors",
+    "keywords": ["Infrastructure Loss Surveyors", "ILS"]
+  },
+  {
+    "id": "CLM-05",
+    "source": "claims_report_CLM2024-03291.pdf",
+    "question": "Was the flood exclusion applicable to this claim?",
+    "expected_answer": "no",
+    "keywords": ["not applicable", "N/A", "windstorm not flood"]
+  },
+  {
+    "id": "CLM-06",
+    "source": "claims_report_CLM2024-03291.pdf",
+    "question": "How much was assessed for roof repair?",
+    "expected_answer": "185000",
+    "keywords": ["1,85,000", "roof repair"]
+  },
+  {
+    "id": "CLM-07",
+    "source": "claims_report_CLM2024-03291.pdf",
+    "question": "When was the claim reported by the insured?",
+    "expected_answer": "13 July 2024",
+    "keywords": ["13 Jul", "July 2024", "reported"]
+  },
+  {
+    "id": "CGL-01",
+    "source": "commercial_liability_CGL2024-11042.pdf",
+    "question": "What is the each occurrence limit for bodily injury and property damage?",
+    "expected_answer": "20000000",
+    "keywords": ["2,00,00,000", "each occurrence", "bodily injury"]
+  },
+  {
+    "id": "CGL-02",
+    "source": "commercial_liability_CGL2024-11042.pdf",
+    "question": "Is cyber liability covered under the commercial policy?",
+    "expected_answer": "no",
+    "keywords": ["excluded", "cyber", "exclusion", "CGL-E-11"]
+  },
+  {
+    "id": "CGL-03",
+    "source": "commercial_liability_CGL2024-11042.pdf",
+    "question": "What is the named insured on the commercial policy?",
+    "expected_answer": "Veridian Tech Solutions",
+    "keywords": ["Veridian Tech Solutions"]
+  },
+  {
+    "id": "CGL-04",
+    "source": "commercial_liability_CGL2024-11042.pdf",
+    "question": "What is the annual premium for the commercial policy?",
+    "expected_answer": "385000",
+    "keywords": ["3,85,000", "annual premium"]
+  },
+  {
+    "id": "CGL-05",
+    "source": "commercial_liability_CGL2024-11042.pdf",
+    "question": "What percentage of premium is the minimum earned on cancellation?",
+    "expected_answer": "25 percent",
+    "keywords": ["25%", "minimum earned", "short-rate"]
+  }
+]
