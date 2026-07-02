@@ -163,4 +163,4 @@ with gr.Blocks(title="Insurance Document Q&A", theme=gr.themes.Soft()) as demo:
     gr.Markdown("Built with FastAPI · ChromaDB · sentence-transformers · Groq LLaMA 3.1 8B · pdfplumber")
 
 if __name__ == "__main__":
-    demo.launch()
+    demo.launch(server_name="0.0.0.0", server_port=7860, share=False)
