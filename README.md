@@ -10,6 +10,8 @@ pinned: false
 
 # Insurance Document Q&A — Production-Grade RAG Pipeline
 
+**Live API:** https://aditivj-insurance-rag-pipeline.hf.space/docs
+
 A retrieval-augmented generation (RAG) system for querying insurance policy and claims documents. Built to demonstrate production-grade ML engineering practices: layout-aware document parsing, two-stage retrieval, semantic caching, cost/latency instrumentation, and a ground-truth eval pipeline.
 
 ## API Endpoints
