@@ -25,4 +25,4 @@ COPY evals/ ./evals/
 # Create runtime directories
 RUN mkdir -p logs chroma_db data/docs
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "7860"]
