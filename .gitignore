@@ -5,3 +5,5 @@ __pycache__/
 .env
 evals/eval_results.json
 data/docs/
+*.bin
+*.sqlite3
