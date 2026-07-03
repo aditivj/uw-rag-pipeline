@@ -19,33 +19,40 @@ def get_cached(query_embedding):
              sum(b**2 for b in entry["embedding"]) ** 0.5)
         )
         if sim >= CACHE_THRESHOLD:
-            return entry["chunks"], True
-    return None, False
+            return entry["chunks"], entry["metadatas"], True
+    return None, None, False
 
 def retrieve(query: str, top_k: int = 10):
     query_embedding = embedder.encode(query).tolist()
 
-    cached_chunks, cache_hit = get_cached(query_embedding)
+    cached_chunks, cached_metas, cache_hit = get_cached(query_embedding)
     if cache_hit:
-        return cached_chunks, True
+        return cached_chunks, cached_metas, True
 
     collection = client.get_or_create_collection(COLLECTION_NAME)
     results = collection.query(
         query_embeddings=[query_embedding],
-        n_results=min(top_k, collection.count() or 1)
+        n_results=min(top_k, collection.count() or 1),
+        include=["documents", "metadatas", "distances"]
     )
 
     chunks = results["documents"][0] if results["documents"] else []
+    metadatas = results["metadatas"][0] if results["metadatas"] else []
 
     if not chunks:
-        return [], False
+        return [], [], False
 
     pairs = [[query, chunk] for chunk in chunks]
     scores = reranker.predict(pairs)
 
-    ranked = sorted(zip(scores, chunks), reverse=True)
-    top_chunks = [chunk for _, chunk in ranked[:3]]
+    ranked = sorted(zip(scores, chunks, metadatas), reverse=True)
+    top_chunks = [c for _, c, _ in ranked[:3]]
+    top_metas = [m for _, _, m in ranked[:3]]
 
-    cache.append({"embedding": query_embedding, "chunks": top_chunks})
+    cache.append({
+        "embedding": query_embedding,
+        "chunks": top_chunks,
+        "metadatas": top_metas
+    })
 
-    return top_chunks, False
+    return top_chunks, top_metas, False

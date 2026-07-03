@@ -91,14 +91,21 @@ def ask(question, history):
                 history.append((question, entry["answer"] + "\n\n⚡ Cache hit"))
                 return history, ""
 
-        results = collection.query(query_embeddings=[q_emb], n_results=min(10, collection.count() or 1))
+        results = collection.query(
+            query_embeddings=[q_emb],
+            n_results=min(10, collection.count() or 1),
+            include=["documents", "metadatas"]
+        )
         chunks = results["documents"][0] if results["documents"] else []
+        metadatas = results["metadatas"][0] if results["metadatas"] else [{}] * len(chunks)
         if not chunks:
             history.append((question, "No documents ingested yet. Please upload a PDF first."))
             return history, ""
 
         scores = reranker.predict([[question, c] for c in chunks])
-        top3 = [c for _, c in sorted(zip(scores, chunks), reverse=True)[:3]]
+        ranked = sorted(zip(scores, chunks, metadatas), reverse=True)[:3]
+        top3 = [c for _, c, _ in ranked]
+        top_metas = [m for _, _, m in ranked]
 
         context = "\n\n".join(top3)
         prompt = f"""You are an insurance document assistant.
@@ -122,8 +129,23 @@ Answer:"""
             max_tokens=512
         )
         answer = response.choices[0].message.content
-        cache.append({"emb": q_emb, "answer": answer})
-        history.append((question, answer))
+        # Build source citations
+        import os as _os
+        seen = set()
+        citations = []
+        for meta in top_metas:
+            src = meta.get("source", "") if isinstance(meta, dict) else ""
+            page = meta.get("page", 0) if isinstance(meta, dict) else 0
+            label = f"{_os.path.basename(src)}, p.{page + 1}" if src else ""
+            if label and label not in seen:
+                citations.append(label)
+                seen.add(label)
+
+        citation_text = "\n\n📎 **Sources:** " + " · ".join(citations) if citations else ""
+        full_answer = answer + citation_text
+
+        cache.append({"emb": q_emb, "answer": full_answer})
+        history.append((question, full_answer))
         return history, ""
     except Exception as e:
         history.append((question, f"❌ Error: {str(e)}"))
